@@ -9,11 +9,11 @@ const MenuPosts = ({withImage}) => {
         <div className={styles.items}>
             <Link href="/" className={styles.item}>
                 { withImage && (<div className={styles.imageContainer}>
-                    <Image src="" alt="" fill className={styles.image}/>
+                    <Image src="/travel.jpeg" alt="" fill className={styles.image}/>
                 </div>)}
                 <div className={styles.textContainer}>
                     <span className={`${styles.category} ${styles.travel}`}>Travel</span>
-                    <h3 className={styles.postTitle}>Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 className={styles.postTitle}>Exploring new places and experiences worldwide.</h3>
                     <div className={styles.detail}>
                         <span className={styles.userName}>Jatin Singh - </span>
                         <span className={styles.date}>14.09.2023</span>
@@ -23,11 +23,11 @@ const MenuPosts = ({withImage}) => {
 
             <Link href="/" className={styles.item}>
                { withImage && (<div className={styles.imageContainer}>
-                    <Image src="" alt="" fill className={styles.image}/>
+                    <Image src="/culture.jpeg" alt="" fill className={styles.image}/>
                 </div>)}
                 <div className={styles.textContainer}>
                     <span className={`${styles.category} ${styles.culture}`}>Culture</span>
-                    <h3 className={styles.postTitle}>Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 className={styles.postTitle}>Culture is Traditions values art language customs identity.</h3>
                     <div className={styles.detail}>
                         <span className={styles.userName}>Jatin Singh - </span>
                         <span className={styles.date}>14.09.2023</span>
@@ -37,11 +37,11 @@ const MenuPosts = ({withImage}) => {
 
             <Link href="/" className={styles.item}>
                 { withImage && (<div className={styles.imageContainer}>
-                    <Image src="" alt="" fill className={styles.image}/>
+                    <Image src="/fashion.jpg" alt="" fill className={styles.image}/>
                 </div>)}
                 <div className={styles.textContainer}>
                     <span className={`${styles.category} ${styles.fashion}`}>Fashion</span>
-                    <h3 className={styles.postTitle}>Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 className={styles.postTitle}>Fashion is a form of self-expression.</h3>
                     <div className={styles.detail}>
                         <span className={styles.userName}>Jatin Singh - </span>
                         <span className={styles.date}>14.09.2023</span>
@@ -51,11 +51,11 @@ const MenuPosts = ({withImage}) => {
 
             <Link href="/" className={styles.item}>
                 { withImage && (<div className={styles.imageContainer}>
-                    <Image src="" alt="" fill className={styles.image}/>
+                    <Image src="/food.jpeg" alt="" fill className={styles.image}/>
                 </div>)}
                 <div className={styles.textContainer}>
                     <span className={`${styles.category} ${styles.food}`}>Food</span>
-                    <h3 className={styles.postTitle}>Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 className={styles.postTitle}>Food is essential for nourishment and pleasure.</h3>
                     <div className={styles.detail}>
                         <span className={styles.userName}>Jatin Singh - </span>
                         <span className={styles.date}>14.09.2023</span>
