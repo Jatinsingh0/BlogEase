@@ -62,6 +62,20 @@ const MenuPosts = ({withImage}) => {
                     </div>
                 </div>
             </Link>
+
+            <Link href="/" className={styles.item}>
+                { withImage && (<div className={styles.imageContainer}>
+                    <Image src="/sports.jpeg" alt="" fill className={styles.image}/>
+                </div>)}
+                <div className={styles.textContainer}>
+                    <span className={`${styles.category} ${styles.food}`}>Sport</span>
+                    <h3 className={styles.postTitle}>teamwork, endurance, skill, strategy, victory, defeat.</h3>
+                    <div className={styles.detail}>
+                        <span className={styles.userName}>Jatin Singh - </span>
+                        <span className={styles.date}>14.09.2023</span>
+                    </div>
+                </div>
+            </Link>
         </div>
     </div>
   )

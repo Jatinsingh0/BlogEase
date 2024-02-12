@@ -20,7 +20,7 @@
   border-radius: 10px;
 }
 
-.category.style {
+.category.food {
   background-color: #57c4ff31;
 }
 
@@ -28,7 +28,7 @@
   background-color: #da85c731;
 }
 
-.category.sports {
+.category.sport {
   background-color: #7fb88133;
 }
 

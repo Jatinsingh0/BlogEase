@@ -5,7 +5,6 @@ let prisma
 if (process.env.NODE_ENV === 'production') {
   prisma = new PrismaClient()
 } else {
-  // Development environment
   prisma = new PrismaClient()
 }
 
