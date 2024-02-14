@@ -5,7 +5,7 @@ import styles from "./loginPage.module.css";
 import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
-  const {status, data} = useSession();
+  const {status} = useSession();
   const router = useRouter();
 
   if(status == "loading"){

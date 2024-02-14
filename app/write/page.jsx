@@ -5,22 +5,17 @@ import dynamic from "next/dynamic";
 import styles from "./writePage.module.css";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 
 // Dynamically import ReactQuill
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 const WritePage = () => {
   const {status} = useSession();
-  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
 
   if(status == "loading"){
      return <div>Loading...</div>
-  }
-  if(status == "authenticated"){
-    router.push("/");
   }
   return (
     <div className={styles.container}>

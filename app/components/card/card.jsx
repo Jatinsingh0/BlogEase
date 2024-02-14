@@ -16,11 +16,11 @@ const Card = ({ item, key }) => {
           <span className={styles.date}>{item.createdAt.substring(0,10)} - </span>
           <span className={styles.category}>{item.catSlug}</span>
         </div>
-        <Link href="/">
+        <Link href={`/posts/${item.slug}`}>
           <h1 className={styles.title}>{item.title}</h1>
         </Link>
-        <p className={styles.desc}>{item.desc}</p>
-        <Link href="/" className={styles.link}>
+        <p className={styles.desc}>{item.desc.substring(0,1000)}</p>
+        <Link href={`/posts/${item.slug}`} className={styles.link}>
           Read More
         </Link>
       </div>

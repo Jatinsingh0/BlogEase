@@ -1,9 +1,26 @@
+"use client";
+
 import Link from "next/link";
 import styles from "./comments.module.css";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
+import useSWR from "swr";
 
-const Comments = () => {
-  const status = "authenticated";
+const fetcher = async (url) => {
+  const res = await fetch(url);
+  if (!res.ok) {
+    throw new ERROR("Failed to get comments data");
+  }
+  const data = await res.json();
+  return data;
+};
+
+const Comments = ({ postSlug }) => {
+  const { status } = useSession();
+  const { data, isLoading } = useSWR(
+    `https://blog-ease-jade.vercel.app/api/comments?postSlug=${postSlug}`,
+    fetcher
+  );
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Comments</h1>
@@ -17,71 +34,26 @@ const Comments = () => {
       )}
 
       <div className={styles.comments}>
-        <div className={styles.comment}>
+        {isLoading ? "loading" : data?.map((item)=> (
+        <div className={styles.comment} key={item._id}>
           <div className={styles.user}>
-            <Image
-              src=""
+            {item?.user?.image && <Image
+              src={item.user.image}
               alt=""
               width={50}
               height={50}
               className={styles.image}
-            />
+            />}
             <div className={styles.userInfo}>
-              <span className={styles.username}>Jatin singh</span>
-              <span className={styles.date}>06.09.2003</span>
+              <span className={styles.username}>{item.user.name}</span>
+              <span className={styles.date}>{item.createdAt.substring(0,10)}</span>
             </div>
           </div>
           <p className={styles.desc}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
-            molestiae asperiores rem placeat accusantium voluptatem iusto error
-            magnam exercitationem natus beatae nostrum, facere consequatur enim
-            accusamus rerum perferendis. Numquam, natus.
+            {item.desc}
           </p>
         </div>
-
-        <div className={styles.comment}>
-          <div className={styles.user}>
-            <Image
-              src=""
-              alt=""
-              width={50}
-              height={50}
-              className={styles.image}
-            />
-            <div className={styles.userInfo}>
-              <span className={styles.username}>Jatin singh</span>
-              <span className={styles.date}>06.09.2003</span>
-            </div>
-          </div>
-          <p className={styles.desc}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
-            molestiae asperiores rem placeat accusantium voluptatem iusto error
-            magnam exercitationem natus beatae nostrum, facere consequatur enim
-            accusamus rerum perferendis. Numquam, natus.
-          </p>
-        </div>
-
-        <div className={styles.comment}>
-          <div className={styles.user}>
-            <Image
-              src=""
-              alt=""
-              width={50}
-              height={50}
-              className={styles.image}
-            />
-            <div className={styles.userInfo}>
-              <span className={styles.username}>Jatin singh</span>
-              <span className={styles.date}>06.09.2003</span>
-            </div>
-          </div>
-          <p className={styles.desc}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
-            molestiae asperiores rem placeat accusantium voluptatem iusto error
-            magnam exercitationem natus beatae nostrum, facere consequatur enim
-            accusamus rerum perferendis. Numquam, natus.
-          </p>
-        </div>
+        ))}
       </div>
     </div>
   );
