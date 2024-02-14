@@ -1,30 +1,28 @@
 "use client";
-
-import { useState } from "react";
-import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 import styles from "./writePage.module.css";
 import Image from "next/image";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { app } from "../utils/firebase";
+import "react-quill/dist/quill.bubble.css";
 import {
   getStorage,
   ref,
   uploadBytesResumable,
   getDownloadURL,
 } from "firebase/storage";
-
-// Dynamically import ReactQuill
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+import { app } from "../utils/firebase";
+import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
 
 const WritePage = () => {
-  const { status } = useSession();
-  const [open, setOpen] = useState(false);
-  const [value, setValue] = useState("");
   const router = useRouter();
+  const ReactQuill = dynamic(() => import('react-quill'), {ssr: false});
+
+  const [open, setOpen] = useState(false);
   const [file, setFile] = useState(null);
   const [media, setMedia] = useState("");
+  const [value, setValue] = useState("");
   const [title, setTitle] = useState("");
+  const [catSlug, setCatSlug] = useState("");
 
   useEffect(() => {
     const storage = getStorage(app);
@@ -57,28 +55,22 @@ const WritePage = () => {
         }
       );
     };
+
     file && upload();
   }, [file]);
 
-  if (status == "loading") {
-    return <div>Loading...</div>;
-  }
-  if (status == "unauthenticated") {
-    router.push("/");
-  }
-
   const slugify = (str) =>
-  str
-    .toLowerCase()
-    .trim()
-    .replace(/[^\w\s-]/g, "")
-    .replace(/[\s_-]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-    
+    str
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g, "")
+      .replace(/[\s_-]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+
   const handleSubmit = async () => {
-    const res = await fetch("api/posts", {
+    const res = await fetch("/api/posts", {
       method: "POST",
-      body: JSON.stringify({  
+      body: JSON.stringify({
         title,
         desc: value,
         img: media,
@@ -86,6 +78,7 @@ const WritePage = () => {
         catSlug: catSlug || "style",
       }),
     });
+
     if (res.status === 200) {
       const data = await res.json();
       router.push(`/posts/${data.slug}`);
@@ -136,16 +129,13 @@ const WritePage = () => {
             </button>
           </div>
         )}
-        {/* Render ReactQuill only on the client-side */}
-        {typeof window !== "undefined" && (
-          <ReactQuill
-            className={styles.textArea}
-            theme="bubble"
-            value={value}
-            onChange={setValue}
-            placeholder="Tell your story..."
-          />
-        )}
+        <ReactQuill
+          className={styles.textArea}
+          theme="bubble"
+          value={value}
+          onChange={setValue}
+          placeholder="Tell your story..."
+        />
       </div>
       <button className={styles.publish} onClick={handleSubmit}>
         Publish
