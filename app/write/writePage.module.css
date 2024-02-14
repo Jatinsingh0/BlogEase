@@ -2,7 +2,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    background-color: black;
+    background-color: lightslategray;
   }
   
   .select{
