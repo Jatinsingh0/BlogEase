@@ -25,7 +25,7 @@ const Comments = ({postSlug}) => {
 
   const [desc, setDesc] = useState(" ");
 
-  const handelSubmit = async() => {
+  const handleSubmit = async() => {
     await fetch("/api/comments",{
       method: "POST",
       body: JSON.stringify({desc, postSlug}) 
@@ -40,7 +40,7 @@ const Comments = ({postSlug}) => {
       {status === "authenticated" ? (
         <div className={styles.write}>
           <textarea placeholder="write a comment..." className={styles.input} onChange={e=> setDesc(e.target.value)}/>
-          <button className={styles.button} onClick={handelSubmit}>Send</button>
+          <button className={styles.button} onClick={handleSubmit}>Send</button>
         </div>
       ) : (
         <Link href="/login">Login to write a comment</Link>
