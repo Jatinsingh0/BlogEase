@@ -23,10 +23,10 @@ const Comments = ({ postSlug }) => {
     fetcher
   );
 
-  const [desc,mutate, setDesc] = useState("");
+  const [desc,mutate, setDesc] = useState(" ");
 
   const handleSubmit = async () => {
-   await fetch("/api/auth/comments",{
+   await fetch("/api/comments",{
     method: POST,
     body: JSON.stringify(desc, postSlug),
    })
