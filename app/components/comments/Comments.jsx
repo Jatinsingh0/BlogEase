@@ -5,6 +5,7 @@ import styles from "./comments.module.css";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import useSWR from "swr";
+import { useState } from "react";
 
 const fetcher = async (url) => {
   const res = await fetch(url);
@@ -21,13 +22,24 @@ const Comments = ({ postSlug }) => {
     `https://blog-ease-jade.vercel.app/api/comments?postSlug=${postSlug}`,
     fetcher
   );
+
+  const [desc,mutate, setDesc] = useState("");
+
+  const handleSubmit = async () => {
+   await fetch("/api/auth/comments",{
+    method: POST,
+    body: JSON.stringify(desc, postSlug),
+   })
+   mutate();
+  }  
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Comments</h1>
       {status === "authenticated" ? (
         <div className={styles.write}>
-          <textarea placeholder="write a comment..." className={styles.input} />
-          <button className={styles.button}>Send</button>
+          <textarea placeholder="write a comment..." className={styles.input} onChange={e=>setDesc(e.target.value)}/>
+          <button className={styles.button} onClick={handleSubmit}>Send</button>
         </div>
       ) : (
         <Link href="/login">Login to write a comment</Link>
@@ -49,7 +61,7 @@ const Comments = ({ postSlug }) => {
               <span className={styles.date}>{item.createdAt.substring(0,10)}</span>
             </div>
           </div>
-          <p className={styles.desc}>
+          <p className={styles.desc} >
             {item.desc}
           </p>
         </div>
