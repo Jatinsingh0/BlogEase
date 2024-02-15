@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import styles from "./writePage.module.css";
 import Image from "next/image";
-// import "react-quill/dist/quill.bubble.css";
+import "react-quill/dist/quill.bubble.css";
 import {
   getStorage,
   ref,
@@ -11,13 +11,13 @@ import {
 } from "firebase/storage";
 import { app } from "../utils/firebase";
 import { useRouter } from "next/navigation";
-// import dynamic from "next/dynamic";
+import dynamic from "next/dynamic";
 import { useSession } from "next-auth/react";
 
 const WritePage = () => {
   const { status } = useSession();
   const router = useRouter();
-  // const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+  const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState(null);
@@ -133,7 +133,7 @@ const WritePage = () => {
             </button>
           </div>
         )}
-        <textArea
+        <ReactQuill
           className={styles.textArea}
           value={value}
           onChange={setValue}
