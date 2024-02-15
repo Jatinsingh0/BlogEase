@@ -1,12 +1,7 @@
-
 .container{
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: lightgray;
-  padding: 30px;
-  border-radius: 15px;
-  margin-top: 40px;
 }
 
 .select{
@@ -27,9 +22,9 @@
 .addButton {
   width: 36px;
   height: 36px;
-  border-radius: 50%; 
-  background-color: transparent; 
-  border: 1px solid var(--textColor); 
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid var(--textColor);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,18 +60,13 @@
 
 .textArea {
   width: 100%;
-  padding: 8px;
-  margin-top: 50px;
-}
-
-.textArea::placeholder{
-  font-size: 20px;
 }
 
 .publish{
   position: absolute;
-  right: 20px;
-  padding: 12px 30px;
+  top: 0px;
+  right: 0px;
+  padding: 10px 20px;
   border: none;
   background-color: #1a8917;
   color: white;
