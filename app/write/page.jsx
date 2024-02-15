@@ -15,7 +15,7 @@ import dynamic from "next/dynamic";
 
 const WritePage = () => {
   const router = useRouter();
-  const ReactQuill = dynamic(() => import('react-quill'), {ssr: false});
+  const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState(null);
@@ -127,7 +127,7 @@ const WritePage = () => {
           className={styles.textArea}
           theme="bubble"
           value={value}
-          onChange={setValue}
+          onChange={(content, _, source, editor) => setValue(editor.getHTML())}
           placeholder="Tell your story..."
         />
       </div>
