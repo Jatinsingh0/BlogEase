@@ -114,7 +114,7 @@ const WritePage = () => {
       </select>
       <div className={styles.editor}>
         <button className={styles.button} onClick={() => setOpen(!open)}>
-          <Image src="/plusIcon.png" alt="" width={24} height={24} />
+          <Image src="/plusIcon.png" alt="" width={34} height={34} />
         </button>
         {open && (
           <div className={styles.add}>
@@ -126,7 +126,7 @@ const WritePage = () => {
             />
             <button className={styles.addButton}>
               <label htmlFor="image">
-                <Image src="/image.png" alt="" width={16} height={16} />
+                <Image src="/uploadImage.png" alt="" width={16} height={16} />
               </label>
             </button>
           </div>

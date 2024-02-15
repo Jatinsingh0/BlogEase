@@ -2,6 +2,10 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  background-color: lightgray;
+  padding: 30px;
+  border-radius: 15px;
+  margin-top: 40px;
 }
 
 .select{
@@ -64,9 +68,9 @@
 
 .publish{
   position: absolute;
-  top: 0px;
-  right: 0px;
-  padding: 10px 20px;
+  top: 30px;
+  right: 24px;
+  padding: 12px 24px;
   border: none;
   background-color: #1a8917;
   color: white;
