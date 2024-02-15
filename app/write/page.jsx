@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import styles from "./writePage.module.css";
 import Image from "next/image";
-import "react-quill/dist/quill.bubble.css";
 import {
   getStorage,
   ref,
@@ -11,13 +10,11 @@ import {
 } from "firebase/storage";
 import { app } from "../utils/firebase";
 import { useRouter } from "next/navigation";
-import dynamic from "next/dynamic";
 import { useSession } from "next-auth/react";
 
 const WritePage = () => {
   const { status } = useSession();
   const router = useRouter();
-  const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState(null);
@@ -72,7 +69,6 @@ const WritePage = () => {
   if (status === "loading") {
     return <div>Loading...</div>;
   }
-
   if (status === "unauthenticated") {
     router.push("/");
   }
@@ -107,7 +103,7 @@ const WritePage = () => {
         className={styles.select}
         onChange={(e) => setCatSlug(e.target.value)}
       >
-        <option value="style">sport</option>
+        <option value="sport">sport</option>
         <option value="fashion">fashion</option>
         <option value="food">food</option>
         <option value="culture">culture</option>
@@ -116,7 +112,7 @@ const WritePage = () => {
       </select>
       <div className={styles.editor}>
         <button className={styles.button} onClick={() => setOpen(!open)}>
-          <Image src="/plus.png" alt="" width={16} height={16} />
+          <Image src="/plusIcon.png" alt="" width={34} height={34} />
         </button>
         {open && (
           <div className={styles.add}>
@@ -124,18 +120,11 @@ const WritePage = () => {
               type="file"
               id="image"
               onChange={(e) => setFile(e.target.files[0])}
-              style={{ display: "none" }}
             />
-            <button className={styles.addButton}>
-              <label htmlFor="image">
-                <Image src="/uploadImage.png" alt="" width={16} height={16} />
-              </label>
-            </button>
           </div>
         )}
-        <ReactQuill
+        <textArea
           className={styles.textArea}
-          theme="bubble"
           value={value}
           onChange={setValue}
           placeholder="Tell your story..."

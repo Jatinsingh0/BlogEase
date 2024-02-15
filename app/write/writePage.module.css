@@ -1,79 +1,85 @@
 
 .container{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    background-color: lightslategray;
-    padding: 30px;
-    border-radius: 15px;
-    margin-top: 40px;
-  }
-  
-  .select{
-    margin-bottom: 50px;
-    padding: 10px 20px;
-    margin-left: 50px;
-    width: max-content;
-  }
-  
-  .editor {
-    display: flex;
-    gap: 20px;
-    height: 700px;
-    position: relative;
-  }
-  
-  .button,
-  .addButton {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background-color: transparent;
-    border: 1px solid var(--textColor);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-  
-  .addButton {
-    border-color: #1a8917;
-  }
-  
-  .add {
-    display: flex;
-    gap: 20px;
-    background-color: var(--bg);
-    position: absolute;
-    z-index: 999;
-    width: 100%;
-    left: 50px;
-  }
-  
-  .input{
-    padding: 50px;
-    font-size: 64px;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    color: var(--textColor);
-  }
-  
-  .input::placeholder{
-    color: #b3b3b1;
-  }
-  
-  .textArea {
-    width: 100%;
-  }
-  
-  .publish{
-    position: absolute;
-    right: 20px;
-    padding: 12px 30px;
-    border: none;
-    background-color: #1a8917;
-    color: white;
-    cursor: pointer;
-    border-radius: 20px;
-  }
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: lightgray;
+  padding: 30px;
+  border-radius: 15px;
+  margin-top: 40px;
+}
+
+.select{
+  margin-bottom: 50px;
+  padding: 10px 20px;
+  margin-left: 50px;
+  width: max-content;
+}
+
+.editor {
+  display: flex;
+  gap: 20px;
+  height: 700px;
+  position: relative;
+}
+
+.button,
+.addButton {
+  width: 36px;
+  height: 36px;
+  /* border-radius: 50%; */
+  /* background-color: transparent; */
+  /* border: 1px solid var(--textColor); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.addButton {
+  border-color: #1a8917;
+}
+
+.add {
+  display: flex;
+  gap: 20px;
+  background-color: var(--bg);
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+  left: 50px;
+}
+
+.input{
+  padding: 50px;
+  font-size: 64px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: var(--textColor);
+}
+
+.input::placeholder{
+  color: #b3b3b1;
+}
+
+.textArea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 50px;
+}
+
+.textArea::placeholder{
+  font-size: 20px;
+}
+
+.publish{
+  position: absolute;
+  right: 20px;
+  padding: 12px 30px;
+  border: none;
+  background-color: #1a8917;
+  color: white;
+  cursor: pointer;
+  border-radius: 20px;
+}
