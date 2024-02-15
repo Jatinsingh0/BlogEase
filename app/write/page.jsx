@@ -12,8 +12,10 @@ import {
 import { app } from "../utils/firebase";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
+import { useSession } from "next-auth/react";
 
 const WritePage = () => {
+  const { status } = useSession();
   const router = useRouter();
   const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
@@ -59,6 +61,14 @@ const WritePage = () => {
     file && upload();
   }, [file]);
 
+  if (status === "loading") {
+    return <div className={styles.loading}>Loading...</div>;
+  }
+
+  if (status === "unauthenticated") {
+    router.push("/");
+  }
+
   const slugify = (str) =>
     str
       .toLowerCase()
@@ -75,7 +85,7 @@ const WritePage = () => {
         desc: value,
         img: media,
         slug: slugify(title),
-        catSlug: catSlug || "style",
+        catSlug: catSlug || "style", //If not selected, choose the general category
       }),
     });
 
@@ -93,10 +103,7 @@ const WritePage = () => {
         className={styles.input}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <select
-        className={styles.select}
-        onChange={(e) => setCatSlug(e.target.value)}
-      >
+      <select className={styles.select} onChange={(e) => setCatSlug(e.target.value)}>
         <option value="style">style</option>
         <option value="fashion">fashion</option>
         <option value="food">food</option>
@@ -118,8 +125,14 @@ const WritePage = () => {
             />
             <button className={styles.addButton}>
               <label htmlFor="image">
-                <Image src="/uploadImage.png" alt="" width={16} height={16} />
+                <Image src="/image.png" alt="" width={16} height={16} />
               </label>
+            </button>
+            <button className={styles.addButton}>
+              <Image src="/external.png" alt="" width={16} height={16} />
+            </button>
+            <button className={styles.addButton}>
+              <Image src="/video.png" alt="" width={16} height={16} />
             </button>
           </div>
         )}
@@ -127,7 +140,7 @@ const WritePage = () => {
           className={styles.textArea}
           theme="bubble"
           value={value}
-          onChange={(content, _, source, editor) => setValue(editor.getHTML())}
+          onChange={setValue}
           placeholder="Tell your story..."
         />
       </div>
