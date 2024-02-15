@@ -12,7 +12,7 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from "firebase/storage";
-import {app} from "./../utils/firebase";
+import { app } from "../utils/firebase";
 import ReactQuill from "react-quill";
 
 const WritePage = () => {
