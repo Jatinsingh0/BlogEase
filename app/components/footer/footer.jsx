@@ -8,22 +8,19 @@ const Footer = () => {
     <div className={styles.container}>
     <div className={styles.info}>
       <div className={styles.logo}>
-        <h1 className={styles.logoText}>ThoughtCrafts</h1>
+        <h1 className={styles.logoText}>BlogEase</h1>
       </div>
       <p className={styles.desc}>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim
-        necessitatibus similique aspernatur obcaecati veritatis. Aperiam cum
-        porro sequi, totam minima consequuntur, aspernatur deleniti vero
-        repellendus dorales.
+      "BlogEase is your ultimate destination for hassle-free blogging. With its user-friendly interface and intuitive features, BlogEase simplifies the process of creating, managing, and sharing your content. Whether you're a seasoned blogger or just starting out, BlogEase provides the tools you need to unleash your creativity and connect with your audience effortlessly.
       </p>
       <div className={styles.icons}>
         <Link href="https://www.linkedin.com/in/jatin-singh-a9147526b">
             <Image src="/linkdinLogo.png" alt="img" width={26} height={26}/>
         </Link>
+        <Image src="/telegramLogo.jpeg" alt="" width={26} height={26} />
         <Link href="https://github.com/Jatinsingh0">
             <Image src="/github.png" alt="img" width={26} height={26}/>
         </Link>
-        <Image src="/telegramLogo.jpeg" alt="" width={26} height={26} />
         <Image src="/twitterLogo.png" alt="" width={26} height={26} />
       </div>
     </div>
@@ -33,14 +30,14 @@ const Footer = () => {
         <Link href="/">Homepage</Link>
         <Link href="/">Blog</Link>
         <Link href="/">About</Link>
-        <Link href="/">Contact</Link>
+        <Link href="/contact">Contact</Link>
       </div>
       <div className={styles.list}>
         <span className={styles.listTitle}>Tags</span>
-        <Link href="/">Style</Link>
-        <Link href="/">Fashion</Link>
-        <Link href="/">Coding</Link>
-        <Link href="/">Travel</Link>
+        <Link href={"/blog?cat=sport"}>sports</Link>
+        <Link href={"/blog?cat=fashion"}>Fashion</Link>
+        <Link href={"/blog?cat=food"}>Food</Link>
+        <Link href={"/blog?cat=travel"}>Travel</Link>
       </div>
       <div className={styles.list}>
         <span className={styles.listTitle}>Social</span>

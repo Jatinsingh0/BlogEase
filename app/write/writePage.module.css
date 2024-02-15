@@ -1,8 +1,11 @@
+
 .container{
     position: relative;
     display: flex;
     flex-direction: column;
     background-color: lightslategray;
+    padding: 30px;
+    border-radius: 15px;
   }
   
   .select{
@@ -65,9 +68,8 @@
   
   .publish{
     position: absolute;
-    top: 0px;
-    right: 0px;
-    padding: 10px 20px;
+    right: 20px;
+    padding: 12px 30px;
     border: none;
     background-color: #1a8917;
     color: white;

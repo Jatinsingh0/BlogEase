@@ -19,7 +19,7 @@ const Navbar = () => {
         <Image src="/twitterLogo.png" alt="img" width={26} height={26}/>
       </div>
 
-      <div className={styles.logo}>ThoughtCrafts</div>
+      <div className={styles.logo}>BlogEase</div>
 
       <div className={styles.links}>
         <Link href="/" className={styles.link}>Homepage</Link>
