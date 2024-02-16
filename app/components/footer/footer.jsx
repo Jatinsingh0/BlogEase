@@ -29,7 +29,6 @@ const Footer = () => {
         <span className={styles.listTitle}>Links</span>
         <Link href="/">Homepage</Link>
         <Link href="/about">About</Link>
-        <Link href="/">Blog</Link>
         <Link href="/contact">Contact</Link>
       </div>
       <div className={styles.list}>
@@ -41,10 +40,8 @@ const Footer = () => {
       </div>
       <div className={styles.list}>
         <span className={styles.listTitle}>Social</span>
-        <Link href="/">Facebook</Link>
-        <Link href="/">Instagram</Link>
-        <Link href="/">Tiktok</Link>
-        <Link href="/">Youtube</Link>
+        <Link href="https://github.com/Jatinsingh0">Github</Link>
+        <Link href="https://www.linkedin.com/in/jatin-singh-a9147526b">Linkdin</Link>
       </div>
     </div>
   </div>
