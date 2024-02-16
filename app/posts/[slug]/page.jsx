@@ -1,8 +1,7 @@
 import Image from "next/image";
-// import Menu from "../../components/menu/page";
+import Menu from "../../components/menu/page";
 import styles from "./singlePage.module.css";
 import Comments from "../../components/comments/Comments";
-import MenuPosts from "@/app/components/menuPosts/MenuPosts";
 
 const getData = async (slug) => {
   const res = await fetch(`https://blog-ease-jade.vercel.app/api/posts/${slug}`, {
@@ -56,7 +55,7 @@ const singlePage = async ({ params }) => {
             <Comments postSlug = {slug}/>
           </div>
         </div>
-        <MenuPosts  withImage={true}/>
+        <Menu />
       </div>
     </div>
   );
