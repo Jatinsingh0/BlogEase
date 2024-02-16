@@ -7,7 +7,7 @@ const MenuPosts = ({withImage}) => {
   return (
     <div>
         <div className={styles.items}>
-            <Link href="/" className={styles.item}>
+            <Link href={"/blog?cat=travel"} className={styles.item}>
                 { withImage && (<div className={styles.imageContainer}>
                     <Image src="/travel.jpeg" alt="" fill className={styles.image}/>
                 </div>)}
@@ -21,7 +21,7 @@ const MenuPosts = ({withImage}) => {
                 </div>
             </Link>
 
-            <Link href="/" className={styles.item}>
+            <Link href={"/blog?cat=culture"} className={styles.item}>
                { withImage && (<div className={styles.imageContainer}>
                     <Image src="/culture.jpeg" alt="" fill className={styles.image}/>
                 </div>)}
@@ -35,7 +35,7 @@ const MenuPosts = ({withImage}) => {
                 </div>
             </Link>
 
-            <Link href="/" className={styles.item}>
+            <Link href={"/blog?cat=fashion"} className={styles.item}>
                 { withImage && (<div className={styles.imageContainer}>
                     <Image src="/fashion.jpg" alt="" fill className={styles.image}/>
                 </div>)}
@@ -49,7 +49,7 @@ const MenuPosts = ({withImage}) => {
                 </div>
             </Link>
 
-            <Link href="/" className={styles.item}>
+            <Link href={"/blog?cat=food"} className={styles.item}>
                 { withImage && (<div className={styles.imageContainer}>
                     <Image src="/food.jpeg" alt="" fill className={styles.image}/>
                 </div>)}
@@ -63,7 +63,7 @@ const MenuPosts = ({withImage}) => {
                 </div>
             </Link>
 
-            <Link href="/" className={styles.item}>
+            <Link href={"/blog?cat=sport"} className={styles.item}>
                 { withImage && (<div className={styles.imageContainer}>
                     <Image src="/sports.jpeg" alt="" fill className={styles.image}/>
                 </div>)}
