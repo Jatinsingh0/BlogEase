@@ -23,7 +23,7 @@ const Navbar = () => {
 
       <div className={styles.links}>
         <Link href="/" className={styles.link}>Homepage</Link>
-        <Link href="/" className={styles.link}>About</Link>
+        <Link href="/about" className={styles.link}>About</Link>
         <Link href="/contact" className={styles.link}>contact</Link>
         <AuthLinks />
 

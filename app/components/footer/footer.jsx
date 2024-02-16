@@ -11,7 +11,7 @@ const Footer = () => {
         <h1 className={styles.logoText}>BlogEase</h1>
       </div>
       <p className={styles.desc}>
-      BlogEase is your ultimate destination for hassle free blogging. With its user friendly interface and intuitive features BlogEase simplifies the process of creating managing and sharing your content. Whether you are a seasoned blogger or just starting out. BlogEase provides the tools you need to unleash your creativity and connect with your audience effortlessly.
+      BlogEase is your ultimate destination for hassle free blogging. With its user friendly interface and intuitive features BlogEase simplifies the process of creating managing and sharing your content. 
       </p>
       <div className={styles.icons}>
         <Link href="https://www.linkedin.com/in/jatin-singh-a9147526b">
@@ -28,8 +28,8 @@ const Footer = () => {
       <div className={styles.list}>
         <span className={styles.listTitle}>Links</span>
         <Link href="/">Homepage</Link>
+        <Link href="/about">About</Link>
         <Link href="/">Blog</Link>
-        <Link href="/">About</Link>
         <Link href="/contact">Contact</Link>
       </div>
       <div className={styles.list}>
