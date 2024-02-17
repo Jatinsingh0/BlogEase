@@ -28,7 +28,7 @@ const AuthLinks = () => {
           <Link href="/">
             Homepage
           </Link>
-          <Link href="/">
+          <Link href="/about">
             About
           </Link>
           <Link href="/contact">
