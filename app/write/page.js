@@ -13,8 +13,8 @@ import { app } from "../utils/firebase";
 import { useRouter } from "next/navigation";
 // import dynamic from "next/dynamic";
 import { useSession } from "next-auth/react";
-// import { EditorContent, useEditor } from '@tiptap/react';
-// import StarterKit from '@tiptap/starter-kit';
+import { EditorContent, useEditor } from '@tiptap/react';
+import StarterKit from '@tiptap/starter-kit';
 
 const WritePage = () => {
   const { status } = useSession();
@@ -26,14 +26,14 @@ const WritePage = () => {
   const [title, setTitle] = useState("");
   const [catSlug, setCatSlug] = useState("");
 
-  // const editor = useEditor({
-  //   extensions: [StarterKit],
-  //   value: {value},
-  //   onUpdate: ({ editor }) => {
-  //     setValue(editor.getHTML());
-  //   },
+  const editor = useEditor({
+    extensions: [StarterKit],
+    value: {value},
+    onUpdate: ({ editor }) => {
+      setValue(editor.getHTML());
+    },
    
-  // });
+  });
 
   useEffect(() => {
     const storage = getStorage(app);
@@ -139,8 +139,8 @@ const WritePage = () => {
             </button>
           </div>
         )}
-        <textarea value={value} onChange={setValue} className={styles.textArea} placeholder="Tell your story">
-        {/* <EditorContent editor={editor} /> */}
+        <textarea  onChange={setValue} className={styles.textArea} placeholder="Tell your story">
+        <EditorContent editor={editor} />
         </textarea>
         
       </div>
