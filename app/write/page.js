@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useState } from "react";
 import styles from "./writePage.module.css";
 import Image from "next/image";
@@ -11,29 +9,17 @@ import {
 } from "firebase/storage";
 import { app } from "../utils/firebase";
 import { useRouter } from "next/navigation";
-// import dynamic from "next/dynamic";
 import { useSession } from "next-auth/react";
-import { EditorContent, useEditor } from '@tiptap/react';
-import StarterKit from '@tiptap/starter-kit';
 
 const WritePage = () => {
   const { status } = useSession();
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState(null);
-  const [value, setValue] = useState("")
+  const [value, setValue] = useState("");
   const [media, setMedia] = useState("");
   const [title, setTitle] = useState("");
   const [catSlug, setCatSlug] = useState("");
-
-  const editor = useEditor({
-    extensions: [StarterKit],
-    value: {value},
-    onUpdate: ({ editor }) => {
-      setValue(editor.getHTML());
-    },
-   
-  });
 
   useEffect(() => {
     const storage = getStorage(app);
@@ -74,10 +60,6 @@ const WritePage = () => {
     return <div className={styles.loading}>Loading...</div>;
   }
 
-  // if (status === "unauthenticated") {
-  //   router.push("/");
-  // }
-
   const slugify = (str) =>
     str
       .toLowerCase()
@@ -91,10 +73,10 @@ const WritePage = () => {
       method: "POST",
       body: JSON.stringify({
         title,
-        desc: editor.getHTML(),
+        desc: value,
         img: media,
         slug: slugify(title),
-        catSlug: catSlug 
+        catSlug,
       }),
     });
 
@@ -112,7 +94,10 @@ const WritePage = () => {
         className={styles.input}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <select className={styles.select} onChange={(e) => setCatSlug(e.target.value)}>
+      <select
+        className={styles.select}
+        onChange={(e) => setCatSlug(e.target.value)}
+      >
         <option value="sport">sport</option>
         <option value="fashion">fashion</option>
         <option value="food">food</option>
@@ -134,15 +119,22 @@ const WritePage = () => {
             />
             <button className={styles.addButton}>
               <label htmlFor="image">
-                <Image src="/uploadImage.png" alt="" width={16} height={16} />
+                <Image
+                  src="/uploadImage.png"
+                  alt=""
+                  width={16}
+                  height={16}
+                />
               </label>
             </button>
           </div>
         )}
-        <textarea  onChange={setValue} className={styles.textArea} placeholder="Tell your story">
-        <EditorContent editor={editor} />
-        </textarea>
-        
+        <textarea
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          className={styles.textArea}
+          placeholder="Tell your story"
+        />
       </div>
       <button className={styles.publish} onClick={handleSubmit}>
         Publish
