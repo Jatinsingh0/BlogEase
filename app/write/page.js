@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import styles from "./writePage.module.css";
 import Image from "next/image";
-import "react-quill/dist/quill.bubble.css";
 import {
   getStorage,
   ref,
@@ -12,20 +11,29 @@ import {
 } from "firebase/storage";
 import { app } from "../utils/firebase";
 import { useRouter } from "next/navigation";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 import { useSession } from "next-auth/react";
+import { EditorContent, useEditor } from '@tiptap/react';
+import StarterKit from '@tiptap/starter-kit';
 
 const WritePage = () => {
   const { status } = useSession();
   const router = useRouter();
-  const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
-
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState(null);
+  const [value, setValue] = useState("")
   const [media, setMedia] = useState("");
-  const [value, setValue] = useState("");
   const [title, setTitle] = useState("");
   const [catSlug, setCatSlug] = useState("");
+
+  const editor = useEditor({
+    extensions: [StarterKit],
+    content: value,
+    onUpdate: ({ editor }) => {
+      setValue(editor.getHTML());
+    },
+   
+  });
 
   useEffect(() => {
     const storage = getStorage(app);
@@ -66,9 +74,9 @@ const WritePage = () => {
     return <div className={styles.loading}>Loading...</div>;
   }
 
-  if (status === "unauthenticated") {
-    router.push("/");
-  }
+  // if (status === "unauthenticated") {
+  //   router.push("/");
+  // }
 
   const slugify = (str) =>
     str
@@ -83,7 +91,7 @@ const WritePage = () => {
       method: "POST",
       body: JSON.stringify({
         title,
-        desc: value,
+        desc: editor.getHTML(),
         img: media,
         slug: slugify(title),
         catSlug: catSlug 
@@ -131,13 +139,10 @@ const WritePage = () => {
             </button>
           </div>
         )}
-        <ReactQuill
-          className={styles.textArea}
-          theme="bubble"
-          value={value}
-          onChange={setValue}
-          placeholder="Tell your story..."
-        />
+        <textarea className={styles.textArea} placeholder="tell your story">
+        <EditorContent editor={editor} />
+        </textarea>
+        
       </div>
       <button className={styles.publish} onClick={handleSubmit}>
         Publish
