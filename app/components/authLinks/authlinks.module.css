@@ -19,7 +19,7 @@
     position: absolute;
     top: 100px;
     left: 0px;
-    background-color: var(--bg);
+    background-color: #b3b3b1;;
     height: 100%;
     /* height: calc(100vh - 100px); */
     width: 100%;
