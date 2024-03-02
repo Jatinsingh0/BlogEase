@@ -12,7 +12,7 @@ const LoginPage = () => {
     return <div className={styles.loading}>loading...</div>
   }
 
-  if(status == "authenticated"){
+  if(status === "authenticated"){
     router.push("/")
   }
 
