@@ -21,7 +21,7 @@
     left: 0px;
     background-color: #b3b3b1;;
     height: 100%;
-    /* height: calc(100vh - 100px); */
+    height: calc(100vh - 100px);
     width: 100%;
     display: flex;
     flex-direction: column;
